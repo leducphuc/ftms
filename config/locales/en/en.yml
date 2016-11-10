@@ -177,3 +177,9 @@ en:
     attention: "Attention!!!"
     change_status:
       user_subject: "Are you sure want to switch status to "
+  import_data:
+    import_data: "Import data"
+    import: "Import"
+    success: "Success"
+    error: "Error"
+    unknown: "Unknown file type"

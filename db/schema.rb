@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161101033913) do
+ActiveRecord::Schema.define(version: 20161110073929) do
 
   create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "trackable_type"
@@ -155,6 +155,7 @@ ActiveRecord::Schema.define(version: 20161101033913) do
     t.integer  "duration"
     t.integer  "user_id"
     t.index ["deleted_at"], name: "index_exams_on_deleted_at", using: :btree
+    t.index ["user_id"], name: "fk_rails_1ef6db8efd", using: :btree
     t.index ["user_subject_id"], name: "index_exams_on_user_subject_id", using: :btree
   end
 
@@ -538,11 +539,14 @@ ActiveRecord::Schema.define(version: 20161101033913) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "answers", "questions"
   add_foreign_key "course_subjects", "courses"
   add_foreign_key "course_subjects", "subjects"
   add_foreign_key "evaluation_details", "evaluation_templates"
   add_foreign_key "evaluation_details", "evaluations"
   add_foreign_key "evaluations", "users"
+  add_foreign_key "exams", "user_subjects"
+  add_foreign_key "exams", "users"
   add_foreign_key "feed_backs", "users"
   add_foreign_key "filters", "users"
   add_foreign_key "locations", "users"
@@ -554,6 +558,10 @@ ActiveRecord::Schema.define(version: 20161101033913) do
   add_foreign_key "profiles", "locations"
   add_foreign_key "profiles", "users"
   add_foreign_key "project_requirements", "projects"
+  add_foreign_key "questions", "subjects"
+  add_foreign_key "results", "answers"
+  add_foreign_key "results", "exams"
+  add_foreign_key "results", "questions"
   add_foreign_key "task_masters", "subjects"
   add_foreign_key "tasks", "course_subjects", on_delete: :cascade
   add_foreign_key "user_notifications", "notifications"
