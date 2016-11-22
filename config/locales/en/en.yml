@@ -37,6 +37,9 @@ en:
       unknow_errors: "Transaction fails"
       not_find: "%{model_name} couldn't find"
       record_not_found: "Sorry, no record was found!"
+      import:
+        no_select_file: "No files selected"
+        no_log: "Don't have import log file"
   tasks:
     update: "Update"
   signins:
@@ -50,6 +53,7 @@ en:
       year_month: "%Y/%m"
       datetime: "%Y-%m-%d %I:%M %p"
       times: "%H:%M:%S"
+      time_log: "%d:%m:%Y_%H:%M:%S"
   date:
     <<: *datetime
   time:
@@ -176,11 +180,3 @@ en:
     attention: "Attention!!!"
     change_status:
       user_subject: "Are you sure want to switch status to "
-  import_data:
-    import_data: "Import data"
-    import: "Import"
-    success: "Success"
-    error: "Error"
-    unknown: "Unknown file type"
-    not_allowed: "Not Allowed File"
-    import_questions: "Import Questions"

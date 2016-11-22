@@ -1,19 +1,40 @@
-$(document).on('turbolinks:load', function(){
-  $('#loading-image').hide();
-  $('#import-data input#import-submit').prop('disabled',true);
-  $('#import-data input[type=file]').click(function(){
-    $('#loading-image').show();
-  });
-  $('#file-select').on('change', function() {
+var import_data = function() {
+  $('.file-select').bind('change', function() {
     var file_extension = this.files[0].name.split('.').pop().toLowerCase();
-    var allowed_file = ['csv', 'xls', 'xlsx'];
+    var allowed_file, message;
+    if($(this).attr('id') == 'file-select-question') {
+      allowed_file = ['csv', 'xlsx'];
+      message = I18n.t('imports.allowed_csv')
+    }
+
     var found_index = $.inArray(file_extension, allowed_file);
     if(found_index < 0) {
-      alert(I18n.t('import_data.not_allowed'));
-      $('#import-data input[type=submit]').prop('disabled',true);
+      alert(message);
+      $(this).val('');
     }
-    else{
-      $('#import-data input[type=submit]').prop('disabled',false);
+  });
+}
+
+$(document).ready(function(){
+  import_data();
+  $('#form-submit-btn').click(function(){
+    var file_inputs = $('input[type=file]');
+
+    for (var i = 0; i < file_inputs.length; i++){
+      if (file_inputs[i].value === '')
+        file_inputs[i].disabled = true;
+      else{
+        var model = $('#' + file_inputs[i].id).data('model');
+
+        $('#check-box-tag-file-select-' + model).prop('checked', true);
+        $('#loading-image-' + model).removeClass('hidden');
+      }
     }
+
+    $('form').submit();
+  });
+
+  $(document).on('change', '.check-box', function(){
+    $('.check-box').not(this).prop('checked', false);
   });
 });

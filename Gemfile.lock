@@ -81,6 +81,8 @@ GEM
       activemodel (= 5.0.0)
       activesupport (= 5.0.0)
       arel (~> 7.0)
+    activerecord-import (0.16.2)
+      activerecord (>= 3.2)
     activesupport (5.0.0)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (~> 0.7)
@@ -368,6 +370,7 @@ PLATFORMS
 
 DEPENDENCIES
   activemodel-serializers-xml!
+  activerecord-import
   ajax-datatables-rails (= 0.1.2)
   bootstrap-datepicker-rails
   bootstrap-kaminari-views

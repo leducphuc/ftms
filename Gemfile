@@ -43,6 +43,7 @@ gem "paranoia", github: "rubysherpas/paranoia", branch: "rails5"
 gem "jquery-countdown-rails"
 gem "cloudinary"
 gem "roo"
+gem "activerecord-import"
 
 group :development, :test do
   gem "pry-rails"

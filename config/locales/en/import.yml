@@ -1,0 +1,9 @@
+en:
+  imports:
+    question: "Questions"
+    import: "Import"
+    import_data: "Import data"
+    no_select_file: "Please, select some file!"
+    allowed_csv: "Allowed only file csv"
+    allowed_csv_json: "Allowed only file csv and json"
+    importing: "Importing..."

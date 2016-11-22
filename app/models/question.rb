@@ -34,4 +34,6 @@ class Question < ApplicationRecord
     errors.add :question, I18n.t("error.wrong_answer") unless
       size_answer_correct == 1
   end
+  # to do
+  CSV_REJECT_ATTRIBUTES = ["category_id"]
 end
