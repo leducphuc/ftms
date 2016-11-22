@@ -272,4 +272,8 @@ module ApplicationHelper
   def checked? params, type, object_id
     !params.has_key?(type) || params[type].include?(object_id)
   end
+
+  def allowed_file
+    Settings.import.file_types.join ", "
+  end
 end

@@ -148,14 +148,6 @@
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <%= render "layouts/side_panel", object: [Exam, Question] %>
-          <ul class="treeview-menu">
-            <li>
-              <%= link_to admin_imports_path do %>
-                <i class="fa fa-circle-o"></i>
-                <%= t "import_data.import_questions" %>
-              <% end %>
-            </li>
-          </ul>
         </li>
         <li>
           <%= link_to admin_feed_backs_path do %>

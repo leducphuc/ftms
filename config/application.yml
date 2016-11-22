@@ -120,10 +120,23 @@ defaults: &defaults
     - in_out_by_month
   import:
     file_types:
-      csv: ".csv"
-      xls: ".xls"
-      xlsx: ".xlsx"
-
+      - ".csv"
+      - ".xls"
+      - ".xlsx"
+    employee:
+      id: id
+      email: email
+      display_name: display_name
+      uid: uid
+      category_id: category_id
+    data_types:
+      - model: question
+        verify_attribute: Question
+    image_loading_size: "30x30"
+  data_types_import:
+    question: "question"
+  collum_check_import:
+    question: "Question"
 development:
   <<: *defaults
   neat_setting: 800
