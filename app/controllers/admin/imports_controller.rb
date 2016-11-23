@@ -25,8 +25,8 @@ class Admin::ImportsController < ApplicationController
           import.perform
           @logfile.write_total_number_log
         end
+        redirect_to admin_imports_path filename: log_filename
       end
-      redirect_to admin_imports_path filename: log_filename
     else
       redirect_to admin_imports_path, alert: flash_message("import.no_select_file")
     end

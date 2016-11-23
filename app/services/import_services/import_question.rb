@@ -12,7 +12,6 @@ class ImportServices::ImportQuestion < ImportServices::ImportService
   def perform
     spread_sheet = open_sheet
     header = spread_sheet.row(1)
-    questions = []
     (2..spread_sheet.last_row).each do |index|
       row = Hash[[header, spread_sheet.row(index)].transpose]
       subject = Subject.find_by name: row["subject"].strip
@@ -30,15 +29,13 @@ class ImportServices::ImportQuestion < ImportServices::ImportService
       question_content = row["question"].to_s.strip
       question = subject.questions.new content: question_content,
         level: row["level"].to_s.strip, answers_attributes: answers_attributes
-      if question.valid?
+      if question.save
         @logfile.write_success_log "Question: #{question_content}"
-        questions << question
       else
         write_fails_log Question.name
         @logfile.write_fails_log "Question #{question_content}"
       end
     end
-    Question.import questions
   end
 
   private
