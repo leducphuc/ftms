@@ -150,6 +150,9 @@ function toggleFilterMenu(element, resize) {
   }
 
   _top = fa.offset().top + fa.outerHeight();
+  if (document.getElementById('universities-statistic') != null) {
+    _top -= $($('.box-title')[1]).offset().top;
+  }
 
   if (fa.hasClass('controller_name')) {
     _top = $(".panel").offset().top - 44;

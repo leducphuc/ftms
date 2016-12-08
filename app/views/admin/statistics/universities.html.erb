@@ -1,23 +1,71 @@
 <div id="statistics">
-  <div class="<%= params[:type] %> box box-success">
-    <div class="box-header with-border">
-      <h3 class="box-title">
-        <%= t "statistics.universities.title" %>
-      </h3>
+  <div class="<%= params[:type] %>">
+    <div class="box box-success">
+      <div class="box-header with-border">
+        <h3 class="box-title">
+          <%= t "statistics.universities.title" %>
+        </h3>
 
-      <div class="box-tools pull-right">
-        <button type="button" class="btn btn-box-tool" data-widget="collapse">
-          <i class="fa fa-minus"></i>
-        </button>
-        <button type="button" class="btn btn-box-tool" data-widget="remove">
-          <i class="fa fa-times"></i>
-        </button>
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse">
+            <i class="fa fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove">
+            <i class="fa fa-times"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="box-body">
+        <div id="universities-statistic"
+          data-universities="<%= @statistics.universities %>">
+        </div>
       </div>
     </div>
 
-    <div class="box-body">
-      <div id="universities-statistic"
-        data-universities="<%= @statistics.universities %>">
+    <div class="box box-success">
+      <div class="box-header with-border">
+        <h3 class="box-title">
+          <%= t "statistics.universities.title_detail" %>
+        </h3>
+
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse">
+            <i class="fa fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove">
+            <i class="fa fa-times"></i>
+          </button>
+        </div>
+      </div>
+
+      <div id="<%= params[:type] %>" class="box-body">
+        <%= image_tag "loading.gif", id: "loading" %>
+        <div class="title">
+          <button id="btn-filter-on-off" title="<%= filter_title %>"
+            class="btn-filter-onoff-project btn btn-default">
+            &nbsp;
+          </button>
+          <span id="filter-loading" class="filter-loading-offset-top"></span>
+        </div>
+
+        <div class="table">
+          <%= render "shared/datatables/statistic_university_header" %>
+          <%= @statistics.university_presenters.html_safe %>
+        </div>
+
+        <div class="pull-right" id="number-records">
+        </div>
+
+        <div id="filter" data-filter-data="<%= @filter_service.user_filter_data %>"
+          data-type="<%= :training_managements %>" data-id="<%= current_user.id %>"
+          data-is-turn-on="<%= @filter_service.is_on? %>">
+        </div>
+
+        <div class="list-filters">
+          <div class="filter-form">
+          </div>
+        </div>
       </div>
     </div>
   </div>

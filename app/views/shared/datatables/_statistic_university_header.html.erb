@@ -1,0 +1,33 @@
+<div class="fixedTitle">
+
+  <div class="tbody">
+    <div class="trow header">
+      <div class="tcell stt">#</div>
+      <div class="tcell university title">
+        <%= t "training_managements.headers.university" %>
+        <%= link_to filter_datas_path(type: :university, filter_type: :statistics),
+          remote: true,
+          class: "open-select",
+          data: {name: "f-university"} do %>
+          <i class="fa ic ic-filter university"></i>
+        <% end %>
+      </div>
+      <div class="clear-both">
+        <div class="side-bar">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<header class="fixedTable-header">
+  <div id="table-header" class="scroll-table">
+    <div class="tbody">
+      <div class="trow header">
+        <div class="tcell number_trainees title">
+          <%= t "statistics.universities.number_trainees" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

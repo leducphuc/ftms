@@ -41,7 +41,7 @@ class FilterDatasController < ApplicationController
     when "university"
       @key_field = :id
       @value_field = :universitys_name
-      @resources = University.order(:name).pluck :name
+      @resources = University.order(:abbreviation).pluck :abbreviation
     when "trainer"
       @key_field = :trainer
       @value_field = :trainer
@@ -69,8 +69,7 @@ class FilterDatasController < ApplicationController
     when "ready_for_project"
       @key_field = :ready_for_project
       @value_field = :ready_for_project
-      @resources = [t("profiles.columns.ready_for_project.ready"),
-        t("profiles.columns.ready_for_project.not_ready")]
+      @resources = Profile.order(:ready_for_project).pluck(:ready_for_project).uniq.compact
     when "programming_language"
       @key_field = :id
       @value_field = :programming_language_name
